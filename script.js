@@ -336,7 +336,7 @@ window.addEventListener('load', function() {
         console.log(document.fullscreenElement)
         if(!document.fullscreenElement) {
             canvas.requestFullscreen().catch(err => {
-                alert(`Error, can't enable full-screen mode : ${err.message}`)
+                alert(`Error, tidak dapat mengaktifkan mode layar penuh : ${err.message}`)
             });
         }else{
             document.exitFullscreen();
