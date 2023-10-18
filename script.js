@@ -371,8 +371,6 @@ window.addEventListener('load', function() {
         if(!gameOver)  requestAnimationFrame(animate);
     }
 
-  
-
     animate(0);
 
     
