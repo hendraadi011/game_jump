@@ -57,7 +57,6 @@
     z-index: 1000;
     position: relative;
     display: none;
-    left: 20rem;
 }
 .tombol.active{
     display: block;
