@@ -153,7 +153,7 @@ window.addEventListener('load', function() {
             }
             else if((input.keys.indexOf('ArrowUp') > -1 || input.keys.indexOf('swipe up') > -1) && this.onGround()) 
             {
-                console.log('cek')
+    
                 this.vy -= 32;
             
             }
@@ -225,8 +225,8 @@ window.addEventListener('load', function() {
             this.x = this.gameWidth;
             this.y = this.gameHeight - this.height;
             this.frameX = 0;
-            this.maxFrame = 8;
-            this.fps = 10;
+            this.maxFrame = 5;
+            this.fps = 2;
             this.frameTimer = 0;
             this.frameInterval = 1000/this.fps;
             this.speed = 8;
@@ -290,7 +290,7 @@ window.addEventListener('load', function() {
     function handleEnemies(deltaTime) {
        if(enemyTimer > enemyInterval + randomEnemyInterval){
              enemies.push(new Enemy(canvas.width, canvas.height));
-             randomEnemyInterval = Math.random() * 1000 + 500;
+             randomEnemyInterval = Math.random() * 1000 + 100;
              enemyTimer = 0;
        }else {
             enemyTimer += deltaTime;
@@ -305,21 +305,29 @@ window.addEventListener('load', function() {
     }
 
     function displayStatusText(context) {
-        context.textAlign = 'left';
-        context.font = '40px Helvetica';
-        context.fillStyle = 'black';
-        context.fillText('Score: ' + score, 20,50)
-        context.fillStyle = 'white';
-        context.fillText('Score: ' + score, 22,52)
+      
 
+        context.textAlign = 'left';
+        context.font = '20px Arial';
+        context.fillStyle = 'yellow';
+        context.fillText('SCORE : ' + score, 20,40)
+
+        if(score > 5)
+        {
+            document.getElementById('menang').innerHTML = 'menang'
+        }
+
+        
         if(gameOver) {
             context.textAlign = 'center';
             context.fillStyle = 'white';
-            context.fillText('GAME OVER, press enter or swipe down to restrat!', canvas.width/2, 200);
+            context.fillText('GAME OVER', canvas.width/2, 200);
             context.fillStyle = 'black';
-            context.fillText('GAME OVER, press enter or swipe down to restrat!', canvas.width/2 ,202)
-
+            context.fillText('GAME OVER, press enter or swipe down to restrat!', canvas.width/2 ,300)
         }
+
+    
+
 
     }
 
@@ -333,14 +341,13 @@ window.addEventListener('load', function() {
     }
 
     function toggleFullScreen() {
-        console.log(document.fullscreenElement)
-        if(!document.fullscreenElement) {
-            canvas.requestFullscreen().catch(err => {
-                alert(`Error, tidak dapat mengaktifkan mode layar penuh : ${err.message}`)
-            });
-        }else{
-            document.exitFullscreen();
-        }
+        // if(!document.fullscreenElement) {
+        //     canvas.requestFullscreen().catch(err => {
+        //         alert(`Error, tidak dapat mengaktifkan mode layar penuh : ${err.message}`)
+        //     });
+        // }else{
+        //     document.exitFullscreen();
+        // }
     }
     fullScreenButton.addEventListener('click', toggleFullScreen)
     toggleFullScreen()
@@ -349,6 +356,8 @@ window.addEventListener('load', function() {
     const player = new Player(canvas.width, canvas.height);
     const background = new Background(canvas.width, canvas.height);
     // const enemy1 = new Enemy(canvas.width, canvas.height);    
+
+    
 
 
     let lastTime = 0;
@@ -373,5 +382,4 @@ window.addEventListener('load', function() {
 
     animate(0);
 
-    
 })
