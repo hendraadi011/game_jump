@@ -1,9 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Days+One&display=swap');
+
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     overflow: hidden;
+    font-family: 'Days One', sans-serif;
 }
 
 
@@ -27,7 +29,7 @@
     position: absolute;
     text-align: center;
     padding: 10px 15px;
-    font-size: 20px;
+    font-size: 16px;
     top: 10px;
     left: 50%;
     border-radius: 25px;
@@ -37,15 +39,15 @@
     background-image: linear-gradient(to top, #00b09b, #96c93d);
     color: #fff;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
-    animation: reverse;
-    font-family: 'Days One', sans-serif;
+    z-index: 2000;
+    
 }
 #fullScreenButton:hover {
     font-size: 22px;
     background: red;
 }
 
-.card {
+.tombol {
     position: absolute;
     width: 100%;
     height: 100vh;
@@ -53,5 +55,72 @@
     justify-content: center;
     align-items: center;
     z-index: 1000;
+    position: relative;
+    display: none;
+    left: 20rem;
+}
+.tombol.active{
+    display: block;
+     position: absolute;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    position: relative;
+}
+.tow {
+    height: 50%;
+    width: 50%;
+    flex-direction: column;
+    position: absolute;
+}
+.tow span {
+    position: absolute;
+    left: 10px;
+    height: 100px;
+    width: 30px;
+    animation: moveUpSpan 2s linear infinite;
+    border-radius: 10px 10px 0px 0px;
+    margin-top: 20px;
+   
+}
 
+.tombol i {
+    right: -15px;
+    position: relative;
+    font-size:  4rem;
+    color: #56e7d6;
+    transform: rotate(27%);
+    rotate: -30deg;
+    animation: moveUp 2s linear infinite;
+    
+    
+}
+
+
+
+@keyframes moveUp {
+    0% {
+        top: 70%;
+    }
+    50% {
+        top: 0%;
+        
+        
+    }
+}
+@keyframes moveUpSpan {
+    0% {
+        top: 70%;
+        background-image: linear-gradient(to top, transparent, #56e7d6);
+        opacity: 0.5;
+    }
+    50% {
+        top: 0%;
+        background-image: linear-gradient(to top, transparent, #56e7d6);
+        opacity: 0.5;
+        
+    }
 }

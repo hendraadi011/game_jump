@@ -1,6 +1,7 @@
 window.addEventListener('load', function() {
     const canvas = document.getElementById('canvas1');
     const ctx = canvas.getContext('2d');
+    const tombolScroll = document.querySelector('.tombol');
 
     canvas.width = 1400;
     canvas.height = 720;
@@ -283,6 +284,11 @@ window.addEventListener('load', function() {
                 this.markedForDelation = true;
                 score++;
             }
+
+            if(score > 10 )
+            {
+                this.speed = 10;
+            }
         }
 
     }
@@ -312,9 +318,11 @@ window.addEventListener('load', function() {
         context.fillStyle = 'yellow';
         context.fillText('SCORE : ' + score, 20,40)
 
-        if(score > 5)
-        {
-            document.getElementById('menang').innerHTML = 'menang'
+        if(score < 4 ) {
+            tombolScroll.classList.add("active");
+        }
+        else{
+            tombolScroll.classList.remove("active")
         }
 
         
@@ -323,13 +331,27 @@ window.addEventListener('load', function() {
             context.fillStyle = 'white';
             context.fillText('GAME OVER', canvas.width/2, 200);
             context.fillStyle = 'black';
-            context.fillText('GAME OVER, press enter or swipe down to restrat!', canvas.width/2 ,300)
+            context.fillText('GAME OVER,swipe down to restrat!', canvas.width/2 ,250)
+            tombolScroll.classList.remove("active")
         }
 
     
 
 
     }
+
+    function toggleFullScreen() {
+        if(!document.fullscreenElement) {
+            canvas.requestFullscreen().catch(err => {
+                alert(`Error, tidak dapat mengaktifkan mode layar penuh : ${err.message}`)
+            });
+        }else{
+            document.exitFullscreen();
+        }
+    }
+    fullScreenButton.addEventListener('click', toggleFullScreen)
+    toggleFullScreen()
+    
 
     function restartGame() {
         player.restart()
@@ -338,19 +360,11 @@ window.addEventListener('load', function() {
         score = 0;
         gameOver = false;
         animate(0)
+
+   
     }
 
-    function toggleFullScreen() {
-        // if(!document.fullscreenElement) {
-        //     canvas.requestFullscreen().catch(err => {
-        //         alert(`Error, tidak dapat mengaktifkan mode layar penuh : ${err.message}`)
-        //     });
-        // }else{
-        //     document.exitFullscreen();
-        // }
-    }
-    fullScreenButton.addEventListener('click', toggleFullScreen)
-    toggleFullScreen()
+   
 
     const input = new inputHandler();
     const player = new Player(canvas.width, canvas.height);
