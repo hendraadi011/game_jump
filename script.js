@@ -8,7 +8,7 @@ window.addEventListener('load', function() {
     let enemies = [];
     let score = 0;
     let gameOver = false;
-    const fullScreenButton = document.getElementById('fullScreenButton');
+    const fullScreenButton = document.querySelector('.fullScreenButton');
 
     class inputHandler {
         constructor() {
@@ -341,16 +341,78 @@ window.addEventListener('load', function() {
     }
 
     function toggleFullScreen() {
-        if(!document.fullscreenElement) {
-            canvas.requestFullscreen().catch(err => {
-                alert(`Error, tidak dapat mengaktifkan mode layar penuh : ${err.message}`)
-            });
-        }else{
-            document.exitFullscreen();
+        // if(!document.fullscreenElement) {
+        //     canvas.requestFullscreen().catch(err => {
+        //         alert(`Error, tidak dapat mengaktifkan mode layar penuh : ${err.message}`)
+        //     });
+        // }else{
+          
+        //     document.exitFullscreen();
+        // }
+        
+      
+        const element = document.documentElement;
+  
+    
+        if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement) {
+            // Pengguna dalam mode layar penuh, maka keluar dari mode layar penuh
+           
+         
+            if (document.exitFullscreen) {
+                document.exitFullscreen().then(() => {
+                   
+                    // Hapus kelas 'active' dari tombol setelah berhasil keluar dari mode layar penuh
+                    console.log('hallo')
+                    fullScreenButton.classList.remove('active');
+                });
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen().then(() => {
+                   
+                    fullScreenButton.classList.remove('active');
+                });
+            } else if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen().then(() => {
+                    fullScreenButton.classList.remove('active');
+                });
+            } else if (document.msExitFullscreen) {
+                document.msExitFullscreen().then(() => {  
+                    fullScreenButton.classList.remove('active');
+                });
+            }
+           
+        } else {
+            // Pengguna tidak dalam mode layar penuh, aktifkan mode layar penuh
+            if (element.requestFullscreen) {
+                element.requestFullscreen().then(() => {
+                    // Tambahkan kelas 'active' ke tombol setelah berhasil masuk ke mode layar penuh
+                    fullScreenButton.classList.add('active');
+                });
+            } else if (element.mozRequestFullScreen) { /* Firefox */
+                element.mozRequestFullScreen().then(() => {
+                    fullScreenButton.classList.add('active');
+                });
+            } else if (element.webkitRequestFullscreen) { /* Chrome, Safari, and Opera */
+                element.webkitRequestFullscreen().then(() => {
+                    fullScreenButton.classList.add('active');
+                });
+            } else if (element.msRequestFullscreen) { /* IE/Edge */
+                element.msRequestFullscreen().then(() => {
+                    fullScreenButton.classList.add('active');
+                });
+            }else if(element.webkitExitFullscreen){
+                element.webkitRequestFullscreen().then(() => {
+                    console.log('cek')
+                });
+            }      
         }
     }
-    fullScreenButton.addEventListener('click', toggleFullScreen)
-    toggleFullScreen()
+    fullScreenButton.addEventListener('click', toggleFullScreen);
+
+    document.querySelector('.fullScreenButton1').addEventListener('click', function() {
+        document.webkitExitFullscreen()
+        fullScreenButton.classList.remove('active')
+    })
+
     
 
     function restartGame() {

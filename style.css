@@ -25,7 +25,7 @@
     display: none;
 }
 
-#fullScreenButton {
+.fullScreenButton {
     position: absolute;
     text-align: center;
     padding: 10px 15px;
@@ -40,11 +40,32 @@
     color: #fff;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
     z-index: 2000;
+    display: block;
     
 }
-#fullScreenButton:hover {
+.fullScreenButton:hover {
     font-size: 22px;
     background: red;
+}
+.fullScreenButton.active {
+    display: none;
+}
+.fullScreenButton1 {
+    position: absolute;
+    text-align: center;
+    padding: 10px 15px;
+    font-size: 16px;
+    top: 10px;
+    left: 50%;
+    border-radius: 25px;
+    border: 5px solid #fff;
+    transform: translateX(-50%);
+    transition: all ease 1;
+    background-image: linear-gradient(to top, #00b09b, #96c93d);
+    color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+   
+    display: block;
 }
 
 .tombol {
