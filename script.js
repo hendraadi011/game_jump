@@ -8,7 +8,60 @@ window.addEventListener('load', function() {
     let enemies = [];
     let score = 0;
     let gameOver = false;
+    let padding = false;
     const fullScreenButton = document.querySelector('.fullScreenButton');
+    const exitFullscreenButton = document.querySelector('.fullScreenButton1');
+    const itemModalDetail = document.querySelector('#item-detail-modal');
+
+    const questions = [
+    
+        {
+            question: "Dengan adanya benda atau unsur garis pada sebuah bidang maka akan terlihat adanya..",
+            optionA: "garis",
+            optionB: "bidang",
+            optionC: "warna",
+            optionD: "ilustrasi",
+            correctOption: "optionD"
+        },
+    
+        {
+            question: "Asal kata ilustrasi berasal dari bahasa latin yaitu",
+            optionA: "ilustration",
+            optionB: "ilustrate",
+            optionC: "ilustrat",
+            optionD: "ilustrate",
+            correctOption: "optionB"
+        },
+    
+        {
+            question: "Yang tidak termasuk sifat permukaan tekstur adalah",
+            optionA: "licin",
+            optionB: "halus",
+            optionC: "cepat",
+            optionD: "kasar",
+            correctOption: "optionB"
+        },
+    ];
+
+    let shuffledQuestions = [] //empty array to hold shuffled selected questions
+
+    function handleQuestions() { 
+        //function to shuffle and push 10 questions to shuffledQuestions array
+        while (shuffledQuestions.length <= 9) {
+            const random = questions[Math.floor(Math.random() * questions.length)]
+            if (!shuffledQuestions.includes(random)) {
+                shuffledQuestions.push(random)
+            }
+        }
+    }
+
+    function NextQuestion(index) {
+        handleQuestions()
+        const currentQuestion = shuffledQuestions[index]
+        document.getElementById("display-question").innerHTML = currentQuestion.question;
+    }
+
+    
 
     class inputHandler {
         constructor() {
@@ -130,7 +183,10 @@ window.addEventListener('load', function() {
                 const distance = Math.sqrt(dx * dx + dy * dy);
                 if(distance < enemy.width / 3 + this.width/3)
                 {
-                    gameOver = true;
+                    // gameOver = true;
+                    padding = true;
+                    itemModalDetail.style.display = 'flex';
+                  
                 }
              })
             // sprite animation
@@ -282,7 +338,8 @@ window.addEventListener('load', function() {
 
             if(this.x < 0 - this.width) {
                 this.markedForDelation = true;
-                score++;
+                localStorage.setItem("score", score++);
+                // score++;
             }
 
             if(score > 10 )
@@ -304,6 +361,7 @@ window.addEventListener('load', function() {
         enemies.forEach(enemy => {
             enemy.draw(ctx);
             enemy.update(deltaTime);
+          
         })
 
         enemies = enemies.filter(enemy => !enemy.markedForDelation)
@@ -386,44 +444,70 @@ window.addEventListener('load', function() {
                 element.requestFullscreen().then(() => {
                     // Tambahkan kelas 'active' ke tombol setelah berhasil masuk ke mode layar penuh
                     fullScreenButton.classList.add('active');
+                    exitFullscreenButton.classList.add('active')
                 });
             } else if (element.mozRequestFullScreen) { /* Firefox */
                 element.mozRequestFullScreen().then(() => {
                     fullScreenButton.classList.add('active');
+                    exitFullscreenButton.classList.add('active')
                 });
             } else if (element.webkitRequestFullscreen) { /* Chrome, Safari, and Opera */
                 element.webkitRequestFullscreen().then(() => {
                     fullScreenButton.classList.add('active');
+                    exitFullscreenButton.classList.add('active')
                 });
             } else if (element.msRequestFullscreen) { /* IE/Edge */
                 element.msRequestFullscreen().then(() => {
                     fullScreenButton.classList.add('active');
+                    exitFullscreenButton.classList.add('active')
                 });
             }else if(element.webkitExitFullscreen){
                 element.webkitRequestFullscreen().then(() => {
-                    console.log('cek')
+                    fullScreenButton.classList.add('active');
+                    exitFullscreenButton.classList.add('active')
                 });
             }      
         }
+
+        
     }
+    
     fullScreenButton.addEventListener('click', toggleFullScreen);
 
-    document.querySelector('.fullScreenButton1').addEventListener('click', function() {
+    exitFullscreenButton.addEventListener('click', function() {
         document.webkitExitFullscreen()
         fullScreenButton.classList.remove('active')
-    })
+        exitFullscreenButton.classList.remove('active')
+    });
+
+    //klik tombol close
+
+    document.querySelector('.modal .close-icon').onclick = (e) => {
+        itemModalDetail.style.display = 'none';
+        paddingGame()
+        padding = false
+        e.preventDefault();
+    }
 
     
 
-    function restartGame() {
-        player.restart()
-        background.restart()
+    function paddingGame() {
+        // background.restart()
         enemies = [];
-        score = 0;
+        padding = false;
+        animate(0)
+    }
+   
+    
+
+    function restartGame() {
+        // player.restart()
+        // background.restart()
+        enemies = [];
+        // score = 0;
         gameOver = false;
         animate(0)
 
-   
     }
 
    
@@ -453,7 +537,8 @@ window.addEventListener('load', function() {
         handleEnemies(deltaTime);
         displayStatusText(ctx)
      
-        if(!gameOver)  requestAnimationFrame(animate);
+        
+        if(!gameOver && !padding)  requestAnimationFrame(animate);
     }
 
     animate(0);

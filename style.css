@@ -63,8 +63,23 @@
     transition: all ease 1;
     background-image: linear-gradient(to top, #00b09b, #96c93d);
     color: #fff;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
-   
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;   
+    display: none;
+}
+.fullScreenButton1.active {
+    position: absolute;
+    text-align: center;
+    padding: 10px 15px;
+    font-size: 16px;
+    top: 10px;
+    left: 50%;
+    border-radius: 25px;
+    border: 5px solid #fff;
+    transform: translateX(-50%);
+    transition: all ease 1;
+    background-image: linear-gradient(to top, #00b09b, #96c93d);
+    color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;   
     display: block;
 }
 
@@ -144,3 +159,54 @@
         
     }
 }
+
+
+
+/* Modal Box */
+.modal{
+    /* display: none; */
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0, 0, 0.6);
+  }
+  
+  .modal .modal-container
+  {
+    position: relative;
+    background-color: #fefe;
+    color: var(--bg);
+    margin: 5% auto;
+    padding: 1.2rem;
+    border-radius: 1rem;
+    width: 80%;
+    animation: modalAnimation 0.5s;
+  
+  }
+  
+  /* modal animation */
+  @keyframes modalAnimation {
+    from {
+      top: -300px;
+      opacity: 0;
+    }
+    to{
+      top: 0;
+      opacity: 1;
+    }  
+  }
+  
+  .modal .modal-container .close-icon{
+    position: absolute;
+    right: 1rem;
+  
+  }
+  
+  .modal .modal-content
+  {
+    display: flex;
+    flex-wrap: nowrap;
+  }
