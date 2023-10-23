@@ -164,7 +164,7 @@
 
 /* Modal Box */
 .modal{
-    /* display: none; */
+    display: none;
     position: fixed;
     z-index: 9999;
     top: 0;
@@ -182,7 +182,7 @@
     margin: 5% auto;
     padding: 1.2rem;
     border-radius: 1rem;
-    width: 80%;
+    width: 60%;
     animation: modalAnimation 0.5s;
   
   }
@@ -207,6 +207,180 @@
   
   .modal .modal-content
   {
-    display: flex;
     flex-wrap: nowrap;
+    height: 100%;
   }
+  .modal .modal-content .game-question-container h4 {
+    font-size: 20px;
+    text-align: center;
+  }
+
+
+
+.game-options-container{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.game-options-container span{
+    width: 35%;
+    height: 3rem;
+    border: 2px solid darkgray;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 10px;
+}
+span label{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s;
+    font-weight: 600;
+    color: rgb(22, 22, 22);
+   
+}
+
+span label:hover{
+    -ms-transform: scale(1.12);
+    -webkit-transform: scale(1.12);
+    transform: scale(1.12);
+    color: white;
+    
+}
+
+input[type="radio"] {
+    position: relative;
+    display: none;
+    margin-bottom: 10px;
+}
+
+
+input[type=radio]:checked ~ .option {
+   
+    transition: all ease 1;
+    background-image: linear-gradient(to top, #00b09b, #96c93d);
+    color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;   
+}
+
+.modal-container-1{
+    display: none;
+    position: fixed;
+    z-index: 10000; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.4); 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+    -webkit-animation: fadeIn 1.2s ease-in-out;
+    animation: fadeIn 1.2s ease-in-out;
+}
+.modal-container-2{
+    display: none;
+    position: fixed;
+    z-index: 10000; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.4); 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+    -webkit-animation: fadeIn 1.2s ease-in-out;
+    animation: fadeIn 1.2s ease-in-out;
+}
+.icon-salah {
+    font-size: 9rem;
+    color: #F78CA2;
+
+}
+.modal-content-container{
+    height: 25rem;
+    width: 25rem;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 25px;
+}
+
+.modal-content-container h1{
+    font-size: 1.3rem;
+    color: lightgray;
+    text-align: center;
+}
+.modal-content-container .modal-button-container  a{
+    text-decoration: none;
+    font-size: 17px;
+    background-color: #96c93d;
+    padding: 50px 20px;
+    color: #fff;
+    text-align: center;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+  }
+
+  @-webkit-keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+
+  .game-details-container{
+    width: 60%;
+    height: 4rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.game-details-container h1{
+    font-size: 1.2rem;
+}
+.game-options-container {
+    width: 100%;
+    height: 100%;
+}
+
+.game-question-container {
+    font-size: 10px;
+    text-align: center;
+    margin: 10px;
+}
+.next-button-container  {
+    margin-top: 20px;
+    text-decoration: none;
+    text-align: center;
+    display: flex;
+    text-align: center;
+    justify-content: space-around;
+}
+.next-button-container a {
+    border: 5px solid #fff;
+    transform: translateX(-50%);
+    transition: all ease 1;
+    background-image: linear-gradient(to top, #00b09b, #96c93d);
+    color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+    padding: 10px 30px;
+    font-size: 20px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 10px;
+}

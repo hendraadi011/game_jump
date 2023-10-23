@@ -1,4 +1,5 @@
 window.addEventListener('load', function() {
+    const index = 0;
     const canvas = document.getElementById('canvas1');
     const ctx = canvas.getContext('2d');
     const tombolScroll = document.querySelector('.tombol');
@@ -7,6 +8,7 @@ window.addEventListener('load', function() {
     canvas.height = 720;
     let enemies = [];
     let score = 0;
+    let nomerAcak = 1;
     let gameOver = false;
     let padding = false;
     const fullScreenButton = document.querySelector('.fullScreenButton');
@@ -14,6 +16,32 @@ window.addEventListener('load', function() {
     const itemModalDetail = document.querySelector('#item-detail-modal');
 
     const questions = [
+        {
+            question: "satu bentuk komunikasi visual yang menggunakan gambar untuk menyampaikan informasi atau pesan seefektif mungkin disebutt... ?",
+            optionA: "Desain",
+            optionB: "Grafis",
+            optionC: "Desain Grafis",
+            optionD: " grafik",
+            correctOption: "optionC"
+        },
+    
+        {
+            question: "Proses untuk membuat dan menciptakan objek baru yang erat kaitanya dengan seni untuk mencapai tujuan disebut...",
+            optionA: "Desain",
+            optionB: "Grafis",
+            optionC: "Desain grafis",
+            optionD: "Grafik",
+            correctOption: "optionA"
+        },
+    
+        {
+            question: "Kata Grafis dapat juga diartikan sebagai...",
+            optionA: "grafik",
+            optionB: "Citra visual",
+            optionC: "Karya seni",
+            optionD: "desain",
+            correctOption: "optionB"
+        },
     
         {
             question: "Dengan adanya benda atau unsur garis pada sebuah bidang maka akan terlihat adanya..",
@@ -39,30 +67,157 @@ window.addEventListener('load', function() {
             optionB: "halus",
             optionC: "cepat",
             optionD: "kasar",
+            correctOption: "optionC"
+        },
+        {
+            question: "1",
+            optionA: "licin",
+            optionB: "halus",
+            optionC: "cepat",
+            optionD: "kasar",
             correctOption: "optionB"
         },
+        {
+            question: "2",
+            optionA: "licin",
+            optionB: "halus",
+            optionC: "cepat",
+            optionD: "kasar",
+            correctOption: "optionB"
+        },
+        {
+            question: "3",
+            optionA: "licin",
+            optionB: "halus",
+            optionC: "cepat",
+            optionD: "kasar",
+            correctOption: "optionB"
+        },
+        {
+            question: "4",
+            optionA: "licin",
+            optionB: "halus",
+            optionC: "cepat",
+            optionD: "kasar",
+            correctOption: "optionB"
+        },
+    
     ];
 
-    let shuffledQuestions = [] //empty array to hold shuffled selected questions
-
-    function handleQuestions() { 
-        //function to shuffle and push 10 questions to shuffledQuestions array
-        while (shuffledQuestions.length <= 9) {
-            const random = questions[Math.floor(Math.random() * questions.length)]
-            if (!shuffledQuestions.includes(random)) {
-                shuffledQuestions.push(random)
-            }
+    let shuffledQuestions = [];
+    
+    function handleQustions() {
+        while(shuffledQuestions.length <= 9)
+        {
+            const random = questions[Math.floor(Math.random() * questions.length)];
+           if(!shuffledQuestions.includes(random))
+           {
+            shuffledQuestions.push(random)
+           }
         }
     }
+   
 
-    function NextQuestion(index) {
-        handleQuestions()
-        const currentQuestion = shuffledQuestions[index]
-        document.getElementById("display-question").innerHTML = currentQuestion.question;
+    function nextQuestion(index) {
+        handleQustions();
+        const currentQuestion = shuffledQuestions[index];
+        document.getElementById('display-question').innerHTML = currentQuestion.question;
+        document.getElementById('option-one-label').innerHTML = currentQuestion.optionA;
+        document.getElementById('option-two-label').innerHTML = currentQuestion.optionB;
+        document.getElementById('option-three-label').innerHTML = currentQuestion.optionC;
+        document.getElementById('option-four-label').innerHTML = currentQuestion.optionD;
+       
+    }
+
+    function checkForAnswe() {
+        const currentQuestion = shuffledQuestions[nomerAcak];
+        const currentQuestionAnswer = currentQuestion.correctOption;
+        const options = document.getElementsByName('option');
+        let correctOption = null;
+        console.log(currentQuestion)
+
+        options.forEach((option) => {
+           if(option.value === currentQuestionAnswer){
+            correctOption = option.labels[0].id;
+           }
+        })
+
+        if(options[0].checked === false && options[1].checked === false && options[2].checked === false && options[3].checked === false) {
+            document.getElementById('option-modal').style.display = "flex"
+        }
+
+        options.forEach((option) => {
+            if(option.checked === true && option.value === currentQuestionAnswer)
+            {
+
+            score += 5;
+            document.getElementById('option-modal-benar').style.display = "flex"
+            itemModalDetail.style.display = 'none';
+            paddingGame()
+            padding = false
+           
+            }else if(option.checked && option.value !== currentQuestionAnswer) {
+                // const wrongLabelId = option.labels[0].id;
+                // document.getElementById(wrongLabelId).style.background = 'red';
+                // document.getElementById(correctOption).style.background = 'green';
+               
+                document.getElementById('option-modal-salah').style.display = "flex"
+                itemModalDetail.style.display = 'none';
+                
+               
+
+                // wrongAttempt++;
+                // indexNumber++;
+                // setTimeout(() => {
+                //     questionNumber++
+                // },100)
+
+            }
+         })
+       
     }
 
     
+    
+   
 
+
+    document.querySelector('#nextQuestion').addEventListener('click', function(e) {
+        e.preventDefault();
+        checkForAnswe();
+        resetOptionBackground();
+        unCheckRadioButtons()
+       
+
+    })
+
+    function resetOptionBackground() {
+        const options = document.getElementsByName("option");
+        options.forEach((option) => {
+            document.getElementById(option.labels[0].id).style.background = '';
+        })
+    }
+    function unCheckRadioButtons() {
+        const options = document.getElementsByName('option');
+        for(let i = 0; i < options.length; i++){
+            options[i].checked = false
+            
+        }
+    }
+
+    document.querySelector('.close-modal').addEventListener('click', function(e){
+        e.preventDefault();
+        document.getElementById('option-modal').style.display = "none"
+    });
+    document.querySelector('.benar-close').addEventListener('click', function(e){
+        e.preventDefault();
+        document.getElementById('option-modal-benar').style.display = "none"
+    })
+
+    
+
+    
+   
     class inputHandler {
         constructor() {
             this.keys = [];
@@ -184,9 +339,14 @@ window.addEventListener('load', function() {
                 if(distance < enemy.width / 3 + this.width/3)
                 {
                     // gameOver = true;
+                 
+                  
                     padding = true;
                     itemModalDetail.style.display = 'flex';
-                  
+                    
+
+               
+                   
                 }
              })
             // sprite animation
@@ -340,23 +500,51 @@ window.addEventListener('load', function() {
                 this.markedForDelation = true;
                 localStorage.setItem("score", score++);
                 // score++;
+
+              
+              
+
             }
 
             if(score > 10 )
             {
                 this.speed = 10;
             }
+          
+           
         }
+        
 
     }
+
+
+  
+
+    
 
     function handleEnemies(deltaTime) {
        if(enemyTimer > enemyInterval + randomEnemyInterval){
              enemies.push(new Enemy(canvas.width, canvas.height));
-             randomEnemyInterval = Math.random() * 1000 + 100;
+             randomEnemyInterval = Math.random() * 1000 + 110;
              enemyTimer = 0;
+    
+             if(nomerAcak >= 9 )
+             {
+                nomerAcak = 1;
+             }else if(nomerAcak > 0 && nomerAcak < 9) {
+                nomerAcak++
+             }
+             console.log(nomerAcak)
+
+             nextQuestion(nomerAcak)
+            
+
+            
+            
+             
        }else {
             enemyTimer += deltaTime;
+            
        }
         enemies.forEach(enemy => {
             enemy.draw(ctx);
@@ -390,7 +578,8 @@ window.addEventListener('load', function() {
             context.fillText('GAME OVER', canvas.width/2, 200);
             context.fillStyle = 'black';
             context.fillText('GAME OVER,swipe down to restrat!', canvas.width/2 ,250)
-            tombolScroll.classList.remove("active")
+            tombolScroll.classList.remove("active");
+            itemModalDetail.style.display = 'none';
         }
 
     
@@ -482,12 +671,20 @@ window.addEventListener('load', function() {
 
     //klik tombol close
 
-    document.querySelector('.modal .close-icon').onclick = (e) => {
+    document.querySelectorAll('.close-icon').onclick = (e) => {
         itemModalDetail.style.display = 'none';
         paddingGame()
         padding = false
         e.preventDefault();
     }
+    document.querySelectorAll('.close-icon-salah').onclick = (e) => {
+        itemModalDetail.style.display = 'none';
+        paddingGame()
+        padding = false
+        e.preventDefault();
+    }
+
+  
 
     
 
@@ -498,13 +695,17 @@ window.addEventListener('load', function() {
         animate(0)
     }
    
+    function jawabanSalah() {
+        gameOver = true
+    }
     
 
     function restartGame() {
-        // player.restart()
-        // background.restart()
+        player.restart()
+        background.restart()
         enemies = [];
-        // score = 0;
+        score = 0;
+        nomerAcak = 1;
         gameOver = false;
         animate(0)
 
@@ -544,3 +745,5 @@ window.addEventListener('load', function() {
     animate(0);
 
 })
+
+

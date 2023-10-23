@@ -31,20 +31,69 @@
                 <i class="fa-regular fa-hand-point-left"></i>
             </div>   
     </div>
+    <div class="modal-container-1" id="option-modal-benar">
+        <h1>Jawabanmu Benar Sekali</h1>
+        <div class="modal-button-container">
+            <a href="" class="benar-close">Lanjut</a>
+        </div>
+    </div>
+    <div class="modal-container-2" id="option-modal-salah">
+        <div class="modal-content-container">
+            <h1>Jawabanmu Salah</h1>
+            <i class="fa-regular fa-face-frown icon-salah"></i>
+            <div class="modal-button-container">
+                <a href="" class="benar-close bermain-lagi">Bermain Lagi</a>
+                <a href="" class="benar-close">Home</a>
+            </div>
+        </div>
+       
+    </div>
     
     <!-- Modal Box Item Detial Start -->
   <div class="modal" id="item-detail-modal">
+    
     <div class="modal-container">
-        <a href="" class="close-icon"><i class="fa-regular fa-circle-xmark"></i></a>
-        <div class="modal-content">
-            <div class="game-question-container">
-                <h1 id="display-question"></h1>
-            </div>
-            <div class="produk-content">
+        <div class="game-quiz-container">
+            <div class="modal-content">
+                <div class="game-question-container">
+                    <h1 id="display-question"></h1>
+                </div>
                
+               
+                <div class="game-options-container">
+                    <div class="modal-container-1" id="option-modal">
+                        <h1>Pilih Jawaban yang tepat</h1>
+                        <div class="modal-button-container">
+                            <a href="" class="close-modal">Lanjut</a>
+                        </div>
+                    </div>
+                   
+                    <span>
+                        <input type="radio" id="option-one" name="option" class="radio" value="optionA">
+                        <label for="option-one" class="option" id="option-one-label"></label>
+                    </span>
+                    <span>
+                        <input type="radio" id="option-two" name="option" class="radio" value="optionB" />
+                        <label for="option-two" class="option" id="option-two-label"></label>
+                    </span>
+                    <span>
+                        <input type="radio" id="option-three" name="option" class="radio" value="optionC" />
+                        <label for="option-three" class="option" id="option-three-label"></label>
+                    </span>
+                    <span>
+                        <input type="radio" id="option-four" name="option" class="radio" value="optionD" />
+                        <label for="option-four" class="option" id="option-four-label"></label>
+                    </span>
+                </div>
+    
+                <div class="next-button-container">
+                    <a href="" id="nextQuestion" >Lanjut</a>
+                </div>
+                
             </div>
         </div>
     </div>
+ 
   </div>
    
     
