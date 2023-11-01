@@ -17,58 +17,136 @@ window.addEventListener('load', function() {
 
     const questions = [
         {
-            question: "https://img.freepik.com/free-photo/hands-holding-letter_53876-63656.jpg?w=360&t=st=1698807709~exp=1698808309~hmac=b0f40344c5e7722d1bab95555f3cb917ce28c823ec08d6bf4006a7c59384d50d",
-            optionA: "Desain",
-            optionB: "Grafis",
-            optionC: "Desain Grafis",
-            optionD: " grafik",
-            correctOption: "optionC"
-        },
-    
-        {
-            question: "https://img.freepik.com/free-vector/hand-drawn-vowels-illustration_23-2150140072.jpg?w=740&t=st=1698803033~exp=1698803633~hmac=cdf67523d6698b13a375f45e81849bc541be059024be548e2d53ac787d151196?",
-            optionA: "Desain",
-            optionB: "Grafis",
-            optionC: "Desain grafis",
-            optionD: "Grafik",
+            question: "img/369971-PBR8GT-461.jpg",
+            optionA: "A",
+            optionB: "B",
+            optionC: "C",
+            optionD: "D",
             correctOption: "optionA"
         },
-    
         {
-            question: "https://img.freepik.com/free-vector/hand-drawn-vowels-illustration_23-2150140072.jpg?w=740&t=st=1698803033~exp=1698803633~hmac=cdf67523d6698b13a375f45e81849bc541be059024be548e2d53ac787d151196?",
-            optionA: "grafik",
-            optionB: "Citra visual",
-            optionC: "Karya seni",
-            optionD: "desain",
+            question: "img/b.jpg",
+            optionA: "A",
+            optionB: "B",
+            optionC: "C",
+            optionD: "D",
             correctOption: "optionB"
         },
-    
         {
-            question: "https://img.freepik.com/free-vector/hand-drawn-vowels-illustration_23-2150140072.jpg?w=740&t=st=1698803033~exp=1698803633~hmac=cdf67523d6698b13a375f45e81849bc541be059024be548e2d53ac787d151196?",
-            optionA: "garis",
-            optionB: "bidang",
-            optionC: "warna",
-            optionD: "ilustrasi",
+            question: "img/c.jpg",
+            optionA: "A",
+            optionB: "B",
+            optionC: "C",
+            optionD: "D",
+            correctOption: "optionC"
+        },
+        {
+            question: "img/d.jpg",
+            optionA: "A",
+            optionB: "B",
+            optionC: "C",
+            optionD: "D",
             correctOption: "optionD"
         },
-    
         {
-            question: "https://img.freepik.com/free-vector/hand-drawn-vowels-illustration_23-2150140072.jpg?w=740&t=st=1698803033~exp=1698803633~hmac=cdf67523d6698b13a375f45e81849bc541be059024be548e2d53ac787d151196?",
-            optionA: "ilustration",
-            optionB: "ilustrate",
-            optionC: "ilustrat",
-            optionD: "ilustrate",
+            question: "img/e",
+            optionA: "A",
+            optionB: "D",
+            optionC: "C",
+            optionD: "E",
+            correctOption: "optionD"
+        },
+        {
+            question: "img/369971-PBR8GT-461.jpg",
+            optionA: "A",
+            optionB: "B",
+            optionC: "C",
+            optionD: "D",
+            correctOption: "optionA"
+        },
+        {
+            question: "img/c.jpg",
+            optionA: "A",
+            optionB: "B",
+            optionC: "C",
+            optionD: "D",
+            correctOption: "optionC"
+        },
+        {
+            question: "img/d.jpg",
+            optionA: "A",
+            optionB: "B",
+            optionC: "C",
+            optionD: "D",
+            correctOption: "optionD"
+        },
+        {
+            question: "img/b.jpg",
+            optionA: "A",
+            optionB: "B",
+            optionC: "C",
+            optionD: "D",
             correctOption: "optionB"
         },
+
+
+         {
+            question: "img/369971-PBR8GT-461.jpg",
+            optionA: "A",
+            optionB: "B",
+            optionC: "C",
+            optionD: "D",
+            correctOption: "optionA"
+        },
+         {
+            question: "img/d.jpg",
+            optionA: "A",
+            optionB: "B",
+            optionC: "C",
+            optionD: "D",
+            correctOption: "optionD"
+        }, {
+            question: "img/369971-PBR8GT-461.jpg",
+            optionA: "A",
+            optionB: "B",
+            optionC: "C",
+            optionD: "D",
+            correctOption: "optionA"
+        },
+
+        {
+            question: "img/b.jpg",
+            optionA: "A",
+            optionB: "B",
+            optionC: "C",
+            optionD: "D",
+            correctOption: "optionB"
+        },
+        {
+            question: "img/369971-PBR8GT-461.jpg",
+            optionA: "A",
+            optionB: "B",
+            optionC: "C",
+            optionD: "D",
+            correctOption: "optionA"
+        },
+        {
+            question: "img/369971-PBR8GT-461.jpg",
+            optionA: "A",
+            optionB: "B",
+            optionC: "C",
+            optionD: "D",
+            correctOption: "optionA"
+        },
+        
     
-       
-    
+        
     ];
 
     let shuffledQuestions = [];
-    
+
     function handleQustions() {
-        while(shuffledQuestions.length <= 4)
+        while(shuffledQuestions.length <= 9)
         {
             const random = questions[Math.floor(Math.random() * questions.length)];
            if(!shuffledQuestions.includes(random))

@@ -238,7 +238,7 @@
 
 .game-options-container span{
     width: 35%;
-    height: 3rem;
+    height: 5rem;
     border: 2px solid darkgray;
     border-radius: 20px;
     overflow: hidden;
@@ -251,6 +251,7 @@ span label{
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    font-size: 5rem;
     transition: transform 0.3s;
     font-weight: 600;
     color: rgb(22, 22, 22);
@@ -276,7 +277,6 @@ input[type=radio]:checked ~ .option {
    
     transition: all ease 1;
     background-image: linear-gradient(to top, #00b09b, #96c93d);
-    color: #fff;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;   
 }
 
@@ -411,7 +411,7 @@ input[type=radio]:checked ~ .option {
     }
     .game-options-container span{
         width: 5rem;
-        font-size: 10px;
+        font-size: 2rem;
     }
     .next-button-container a {
         border: 2px solid #fff;
