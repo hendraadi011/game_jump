@@ -396,10 +396,11 @@ input[type=radio]:checked ~ .option {
     border-radius: 10px;
 }
 
-@media (max-width: 754px) {
+@media (max-width: 843px) {
     .modal .modal-container {
         background-color: yellow;
         width: 90%;
+        overflow: auto;
     }
     .modal .modal-content .game-question-container img{
         width: 30%;
