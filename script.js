@@ -17,7 +17,7 @@ window.addEventListener('load', function() {
 
     const questions = [
         {
-            question: "satu bentuk komunikasi visual yang menggunakan gambar untuk menyampaikan informasi atau pesan seefektif mungkin disebutt... ?",
+            question: "https://img.freepik.com/free-vector/hand-drawn-vowels-illustration_23-2150140072.jpg?w=740&t=st=1698803033~exp=1698803633~hmac=cdf67523d6698b13a375f45e81849bc541be059024be548e2d53ac787d151196?",
             optionA: "Desain",
             optionB: "Grafis",
             optionC: "Desain Grafis",
@@ -26,7 +26,7 @@ window.addEventListener('load', function() {
         },
     
         {
-            question: "Proses untuk membuat dan menciptakan objek baru yang erat kaitanya dengan seni untuk mencapai tujuan disebut...",
+            question: "https://img.freepik.com/free-vector/hand-drawn-vowels-illustration_23-2150140072.jpg?w=740&t=st=1698803033~exp=1698803633~hmac=cdf67523d6698b13a375f45e81849bc541be059024be548e2d53ac787d151196?",
             optionA: "Desain",
             optionB: "Grafis",
             optionC: "Desain grafis",
@@ -35,7 +35,7 @@ window.addEventListener('load', function() {
         },
     
         {
-            question: "Kata Grafis dapat juga diartikan sebagai...",
+            question: "https://img.freepik.com/free-vector/hand-drawn-vowels-illustration_23-2150140072.jpg?w=740&t=st=1698803033~exp=1698803633~hmac=cdf67523d6698b13a375f45e81849bc541be059024be548e2d53ac787d151196?",
             optionA: "grafik",
             optionB: "Citra visual",
             optionC: "Karya seni",
@@ -44,7 +44,7 @@ window.addEventListener('load', function() {
         },
     
         {
-            question: "Dengan adanya benda atau unsur garis pada sebuah bidang maka akan terlihat adanya..",
+            question: "https://img.freepik.com/free-vector/hand-drawn-vowels-illustration_23-2150140072.jpg?w=740&t=st=1698803033~exp=1698803633~hmac=cdf67523d6698b13a375f45e81849bc541be059024be548e2d53ac787d151196?",
             optionA: "garis",
             optionB: "bidang",
             optionC: "warna",
@@ -53,7 +53,7 @@ window.addEventListener('load', function() {
         },
     
         {
-            question: "Asal kata ilustrasi berasal dari bahasa latin yaitu",
+            question: "https://img.freepik.com/free-vector/hand-drawn-vowels-illustration_23-2150140072.jpg?w=740&t=st=1698803033~exp=1698803633~hmac=cdf67523d6698b13a375f45e81849bc541be059024be548e2d53ac787d151196?",
             optionA: "ilustration",
             optionB: "ilustrate",
             optionC: "ilustrat",
@@ -61,53 +61,14 @@ window.addEventListener('load', function() {
             correctOption: "optionB"
         },
     
-        {
-            question: "Yang tidak termasuk sifat permukaan tekstur adalah",
-            optionA: "licin",
-            optionB: "halus",
-            optionC: "cepat",
-            optionD: "kasar",
-            correctOption: "optionC"
-        },
-        {
-            question: "1",
-            optionA: "licin",
-            optionB: "halus",
-            optionC: "cepat",
-            optionD: "kasar",
-            correctOption: "optionB"
-        },
-        {
-            question: "2",
-            optionA: "licin",
-            optionB: "halus",
-            optionC: "cepat",
-            optionD: "kasar",
-            correctOption: "optionB"
-        },
-        {
-            question: "3",
-            optionA: "licin",
-            optionB: "halus",
-            optionC: "cepat",
-            optionD: "kasar",
-            correctOption: "optionB"
-        },
-        {
-            question: "4",
-            optionA: "licin",
-            optionB: "halus",
-            optionC: "cepat",
-            optionD: "kasar",
-            correctOption: "optionB"
-        },
+       
     
     ];
 
     let shuffledQuestions = [];
     
     function handleQustions() {
-        while(shuffledQuestions.length <= 9)
+        while(shuffledQuestions.length <= 4)
         {
             const random = questions[Math.floor(Math.random() * questions.length)];
            if(!shuffledQuestions.includes(random))
@@ -121,7 +82,7 @@ window.addEventListener('load', function() {
     function nextQuestion(index) {
         handleQustions();
         const currentQuestion = shuffledQuestions[index];
-        document.getElementById('display-question').innerHTML = currentQuestion.question;
+        document.getElementById('display-question').src = currentQuestion.question;
         document.getElementById('option-one-label').innerHTML = currentQuestion.optionA;
         document.getElementById('option-two-label').innerHTML = currentQuestion.optionB;
         document.getElementById('option-three-label').innerHTML = currentQuestion.optionC;

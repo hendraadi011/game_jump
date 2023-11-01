@@ -343,8 +343,9 @@ input[type=radio]:checked ~ .option {
   }
 
   .game-details-container{
-    width: 60%;
+    width: 90%;
     height: 4rem;
+    background-color: #00b09b;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -384,3 +385,4 @@ input[type=radio]:checked ~ .option {
     text-decoration: none;
     border-radius: 10px;
 }
+
