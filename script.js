@@ -17,7 +17,7 @@ window.addEventListener('load', function() {
 
     const questions = [
         {
-            question: "https://img.freepik.com/free-vector/hand-drawn-vowels-illustration_23-2150140072.jpg?w=740&t=st=1698803033~exp=1698803633~hmac=cdf67523d6698b13a375f45e81849bc541be059024be548e2d53ac787d151196?",
+            question: "https://img.freepik.com/free-photo/hands-holding-letter_53876-63656.jpg?w=360&t=st=1698807709~exp=1698808309~hmac=b0f40344c5e7722d1bab95555f3cb917ce28c823ec08d6bf4006a7c59384d50d",
             optionA: "Desain",
             optionB: "Grafis",
             optionC: "Desain Grafis",
