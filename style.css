@@ -399,3 +399,9 @@ input[type=radio]:checked ~ .option {
     border-radius: 10px;
 }
 
+@media (max-width: 754px) {
+    .modal .modal-container {
+        background-color: yellow;
+        width: 90%;
+    }
+}
